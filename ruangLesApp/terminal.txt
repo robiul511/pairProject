@@ -1,0 +1,23 @@
+creat database 
+creat model migration buat bikin table, tinggal npx sequelize db:migrate
+seeding, sudah bikin seeding tinggal npx sequelize db:seed:all
+sudah membuat asosiasi
+
+ini model2 nya  <<<<
+Tutor {
+  name: 'string',
+  age: 'integer',
+  gender: 'string',
+  subject: 'string'
+}
+
+Student {
+  name: 'string',
+  age: 'integer',
+  gender: 'string',
+}
+
+TutorStudent {
+  TutorId: 'integer',
+  StudentId: 'integer'
+}
