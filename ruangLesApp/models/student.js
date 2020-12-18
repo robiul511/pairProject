@@ -13,16 +13,24 @@ module.exports = (sequelize, DataTypes) => {
       Student.belongsToMany(models.Tutor, { 
         through: 'TutorStudents' 
       });
-      // define association here
     }
+
   };
   Student.init({
     name: DataTypes.STRING,
     age: DataTypes.INTEGER,
-    gender: DataTypes.STRING
+    gender: DataTypes.STRING,
+    status: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Student',
+    hooks: {
+      beforeCreate(instance, options) {
+        if (!instance.status) {
+          instance.status = false
+        }
+      }
+    }
   });
   return Student;
 };

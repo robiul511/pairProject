@@ -1,22 +1,32 @@
 const express = require('express')
-const { Tutor, Student} = require ('./models')
-
+const session = require('express-session')
 const app = express()
+const isEnrolled = require('./helper/helper.js')
+const router = require('./routers/routes')
+
 const port = 3000
 
-app.get('/', (req,res) => {
-    Tutor.findAll({
-        include: [Student]
-    })
-    .then((result) => {
-        res.send(result)
-    })
-    .catch((err) => {
-        res.send(err)
-    })
-})
+//install express session
+app.use(session({
+  secret: 'terserah',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}))
 
+// install ejs
+app.set('view engine', 'ejs')
+
+//middle-ware
+app.use(express.urlencoded({extended: false}))
+
+//define endpoint
+app.use('/', router)
+
+//helpers
+app.locals.isEnrolled = isEnrolled
 
 app.listen(port, () => {
-    console.log('app running')
+  console.log('Listening on', port);
 })
+

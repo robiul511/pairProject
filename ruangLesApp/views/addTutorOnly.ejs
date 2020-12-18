@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Tutor to Student</title>
+</head>
+<body>
+  <%- include('./partials/navbar.ejs') %>
+  <h1>Add Tutor</h1>
+  <h2>Student's Name: <%= dataStudent.name %></h2>
+  <form method="POST" action="/students/addtutor/<%= dataStudent.id %>">
+    <div>
+      <label for="tutorId">Add Student's Tutor:</label>
+      <select name="tutorId" id="tutorId">
+        <% data.forEach((element) => { %>
+          <option value="<%= element.id %>"> <%= element.name %> </option>
+        <% }) %>
+      </select>
+    </div>
+    <button type="submit"> Add </button>
+  </form>
+  
+</body>
+</html>

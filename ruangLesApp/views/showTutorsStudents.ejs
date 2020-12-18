@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutors</title>
+</head>
+<body>
+  <%- include('./partials/navbar.ejs') %>
+  <h1><%= data.name %>'s Students</h1>
+  <table border="1">
+      <thead>
+          <tr>
+              <th> ID </th>
+              <th> Name </th>
+              <th> Age </th>
+              <th> Gender </th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <% data.Students.forEach((element, index) => { %>
+              <tr>
+                  <td> <%= element.id %> </td>
+                  <td> <%= element.name %> </td>
+                  <td> <%= element.age %> </td>
+                  <td> <%= element.gender %> </td>
+              </tr>
+          <% }) %>
+      </tbody>
+  </table>
+</body>
+</html>

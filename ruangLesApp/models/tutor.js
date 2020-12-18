@@ -9,11 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    nameFormatter() {
+      let prefix
+      this.gender == 'Male' ? prefix = 'Mr.' : prefix = 'Mrs'
+      return `${prefix} ${this.name}`
+    }
+    
     static associate(models) {
       Tutor.belongsToMany(models.Student, { 
         through: 'TutorStudents' 
       })
-      // define association here
     }
   };
   Tutor.init({

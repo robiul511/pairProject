@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+</head>
+<body>
+  <%- include('./partials/navbar.ejs') %>
+  <h1>Students Data</h1>
+  <table border="1">
+      <thead>
+          <tr>
+              <th> ID </th>
+              <th> Name </th>
+              <th> Age </th>
+              <th> Gender </th>
+              <th> Status </th>
+              <th> Tutor's </th>
+              <th> Subjects Taken </th>
+              <th> Actions </th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <% data.forEach((element, index) => { %>
+            <% let tutorList = [], subjectList = [] %>
+            <% element.Tutors.forEach((el) => { %>
+              <% tutorList.push(el.name) %>
+              <% subjectList.push(el.subject) %>
+            <% }) %>
+            <tr>
+                <td> <%= element.id %> </td>
+                <td> <%= element.name %> </td>
+                <td> <%= element.age %> </td>
+                <td> <%= element.gender %> </td>
+                <td> <%= isEnrolled(element.status) %> </td>
+                <td> <%= tutorList%> </td>
+                <td> <%= subjectList %> </td>
+                <td>
+                  <a href="/students/edit/<%= element.id %>"> Edit </a>
+                  <a href="/students/delete/<%= element.id %>"> Delete </a>
+                  <a href="/students/addtutor/<%= element.id %>"> Add Tutor </a>
+                </td>
+            </tr>
+          <% }) %>
+      </tbody>
+  </table>
+</body>
+</html>

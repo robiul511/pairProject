@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "rahasia",
-    "database": "pair-project-db",
+    "database": "pair-project-db-delphito",
     "host": "localhost",
     "dialect": "postgres"
   },

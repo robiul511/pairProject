@@ -1,43 +1,16 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('TutorStudents', [
-      {
-        TutorId: 1,
-        StudentId: 1,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        TutorId: 1,
-        StudentId: 2,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        TutorId: 3,
-        StudentId: 2,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        TutorId: 3,
-        StudentId: 3,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        TutorId: 2,
-        StudentId: 1,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      
-    ], {});
+  up: (queryInterface, Sequelize) => {
+    let data = require('../assets/associations.json')
+    data.forEach(element => {
+      element.createdAt = new Date()
+      element.updatedAt = new Date()
+    });
+    return queryInterface.bulkInsert('TutorStudents', data, {});
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('TutorStudents', null, {});
   }
 };
