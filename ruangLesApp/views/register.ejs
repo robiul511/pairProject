@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <form action="/register" method="POST">
+        <fieldset>
+        <legend>Log in First</legend>
+        <% if (errorMessage) { %>
+            <p style="color:red"><%= errorMessage %></p>
+        <%}%>
+        <p>
+            <label>name:</label>
+            <input type="text" name="name" placeholder="input name here" />
+        </p>
+        <p>
+            <label>password:</label>
+            <input type="password" name="password" placeholder="input your password" />
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Submit" />
+        </p>
+        </fieldset>
+    </form>
+</body>
+</html>

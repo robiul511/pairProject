@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+</head>
+<body>
+  <%- include('./partials/navbar.ejs') %>
+  <h1>Edit Students</h1>
+  <table border="1">
+      <thead>
+          <tr>
+              <th> ID </th>
+              <th> Name </th>
+              <th> Age </th>
+              <th> Gender </th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <% data.forEach((element, index) => { %>
+            <tr>
+                <td> <%= element.id %> </td>
+                <td> <%= element.name %> </td>
+                <td> <%= element.age %> </td>
+                <td> <%= element.gender %> </td>
+            </tr>
+          <% }) %>
+      </tbody>
+  </table>
+  <form method="POST" action="/students/edit/<%= data[0].id %>">
+    <div>
+      <label for="name">Edit Name:</label>
+      <input type="text" name="name" id="name" value="<%= data[0].name %>">
+    </div>
+    <div>
+      <label for="age">Edit Age:</label>
+      <input type="number" name="age" id="age" value="<%= data[0].age %>">
+    </div>
+    <div>
+      <label for="gender">Edit Gender:</label>
+      <input type="radio" id="male" name="gender" value="Male">
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="Female">
+      <label for="female">Female</label>
+    </div>
+    <button type="submit"> Edit </button>
+  </form>
+</body>
+</html>

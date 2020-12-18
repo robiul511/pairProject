@@ -4,26 +4,26 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Tutors', [
       {
-        name: 'robi',
+        name: 'Robi',
         age: '23',
-        gender: 'male',
-        subject: 'fisika',
+        gender: 'Male',
+        subject: 'Fisika',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: 'delphito',
+        name: 'Delphito',
         age: '23',
-        gender: 'male',
-        subject: 'matematika',
+        gender: 'Male',
+        subject: 'Matematika',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: 'ria',
+        name: 'Ria',
         age: '24',
-        gender: 'female',
-        subject: 'biologi',
+        gender: 'Female',
+        subject: 'Biologi',
         createdAt: new Date(),
         updatedAt: new Date()
       }

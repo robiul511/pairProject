@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: (queryInterface, Sequelize) => {
     return queryInterface.addConstraint('TutorStudents', {
       fields: ['StudentId'],
       type: 'foreign key',
@@ -21,7 +21,7 @@ module.exports = {
      */
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: (queryInterface, Sequelize) => {
     return queryInterface.removeConstraint('TutorStudents', 'fkey_StudentId', {})
     /**
      * Add reverting commands here.
